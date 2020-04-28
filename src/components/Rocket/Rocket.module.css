@@ -3,10 +3,68 @@
   flex-direction: column;
   justify-content: flex-end;
   height: 100%;
-  border: 1px solid white;
 }
 
 .Rocket {
   display: flex;
   flex-direction: column;
+  animation: rocket 1.5s infinite;
+}
+
+.RocketThrust {
+  animation: fumes .15s infinite;
+}
+
+@keyframes rocket {
+  0% {
+    transform: rotate(0deg, 0deg);
+  }
+  10% {
+    transform: rotate(1deg);
+  }
+  20% {
+    transform: rotate(2.75deg);
+  }
+  25% {
+    transform: rotate(3.5deg);
+  }
+  30% {
+    transform: rotate(2.75deg);
+  }
+  40% {
+    transform: rotate(1deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  60% {
+    transform: rotate(-1deg);
+  }
+  70% {
+    transform: rotate(-2.75deg);
+  }
+  75% {
+    transform: rotate(-3.5deg);
+  }
+  80% {
+    transform: rotate(-2.75deg);
+  }
+  90% {
+    transform: rotate(-1deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes fumes {
+  0% {
+    transform: skew(0deg, 0deg);
+  }
+  50% {
+    transform: skewX(1.5deg);
+  }
+  100% {
+    transform: skewX(-1.5deg);
+  }
 }

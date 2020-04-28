@@ -25,6 +25,7 @@ function RocketGrid() {
         firstStageEngines={rocket.first_stage.engines}
         secondStageFuel={rocket.second_stage.fuel_amount_tons}
         secondStageEngines={rocket.second_stage.engines}
+        numberOfRockets={rocketData.length}
       />
     );
   });

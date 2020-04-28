@@ -3,9 +3,12 @@ import React, { useState, useEffect } from "react";
 import rocket from "../../assets/rocket.png";
 import thrust from "../../assets/thrust.png";
 import rocketTop from "../../assets/rocket_top.png";
+import Dialog from "../UI/Dialog/Dialog";
 import classes from "./Rocket.module.css";
 
-const Rocket = React.memo(({ firstStageFuel, firstStageEngines, secondStageFuel, secondStageEngines }) => {
+let count = 0;
+
+const Rocket = React.memo(({ firstStageFuel, firstStageEngines, secondStageFuel, secondStageEngines, numberOfRockets }) => {
   const [marginBottom, setMarginBottom] = useState(0);
   const [pathsHeight, setPathsHeight] = useState((window.innerHeight - (window.innerHeight - 0.17 * window.innerHeight)).toFixed(0));
   const [firstFuel, setFirstFuel] = useState((firstStageFuel / firstStageEngines).toFixed(0));
@@ -22,9 +25,9 @@ const Rocket = React.memo(({ firstStageFuel, firstStageEngines, secondStageFuel,
       }
       if (firstFuel <= 0) {
         setSecondStageStarted(true);
-        setSecondFuel(Number(secondFuel - 5));
+        setSecondFuel(Number(secondFuel - 40));
       } else {
-        setFirstFuel(Number(firstFuel) - 5);
+        setFirstFuel(Number(firstFuel) - 40);
       }
       setMarginBottom(marginBottom + 15);
       setPathsHeight(Number(pathsHeight) + 15);
@@ -32,19 +35,32 @@ const Rocket = React.memo(({ firstStageFuel, firstStageEngines, secondStageFuel,
     return () => clearInterval(timer);
   }, [marginBottom, pathsHeight, firstFuel, secondFuel]);
 
-  return (
+  let successMsg;
+  let rockets = (
     <div className={classes.RocketPath}>
       {!secondStageStarted && !secondStageFinished ? (
         <div className={classes.Rocket} style={{ marginBottom: marginBottom + "px" }}>
           <img src={rocket} alt='rocket' />
-          <img src={thrust} alt='thrust' />
+          <img src={thrust} alt='thrust' className={classes.RocketThrust} />
         </div>
       ) : secondStageStarted && !secondStageFinished ? (
         <div className={classes.Rocket} style={{ marginBottom: marginBottom + "px" }}>
           <img src={rocketTop} alt='rocket' />
-          <img src={thrust} alt='thrust' />
+          <img src={thrust} alt='thrust' className={classes.RocketThrust} />
         </div>
       ) : null}
+    </div>
+  );
+  if (rockets.props.children === null) {
+    count++;
+    if (count === numberOfRockets * 2) {
+      successMsg = <Dialog />;
+    }
+  }
+  return (
+    <div>
+      {rockets}
+      {successMsg}
     </div>
   );
 });
