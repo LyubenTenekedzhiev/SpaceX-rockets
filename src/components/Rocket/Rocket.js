@@ -3,8 +3,8 @@ import React, { useState, useEffect, useCallback } from "react";
 import thrust from "../../assets/thrust.png";
 import rocketTop from "../../assets/rocket_top.png";
 import rocketBottom from "../../assets/rocket_bottom.png";
-import Dialog from "../UI/Dialog/Dialog";
 import AnimatedVisibility from "../UI/AnimatedComponent/AnimatedComponent";
+import Modal from "../UI/Modal/Modal"
 import classes from "./Rocket.module.css";
 
 let count = 0;
@@ -49,7 +49,7 @@ const Rocket = React.memo(({ firstStageFuel, firstStageEngines, secondStageFuel,
         setMarginBottom(marginBottom + 6.5);
         setPathsHeight(Number(pathsHeight) + 6.5);
       } else if (screenHeight < 800 && screenHeight >= 600) {
-        setMarginBottom(marginBottom + 4.5);
+        setMarginBottom(marginBottom + 4.5); // 4.5
         setPathsHeight(Number(pathsHeight) + 4.5);
       }
     }, 1000);
@@ -99,7 +99,7 @@ const Rocket = React.memo(({ firstStageFuel, firstStageEngines, secondStageFuel,
   if (rockets.props.children === null) {
     count++;
     if (count === numberOfRockets * 2) {
-      successMsg = <Dialog />;
+      successMsg = <Modal show={secondStageFinished} />;
     }
   }
 

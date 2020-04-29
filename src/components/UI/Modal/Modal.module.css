@@ -1,0 +1,80 @@
+.Modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 500;
+  background-color: white;
+  border-radius: 4px;
+  padding: 16px;
+  transition: all 0.3s ease-out;
+}
+
+.DialogTitle {
+  font-size: 3rem;
+  font-weight: 600;
+  padding: 1rem;
+  align-self: flex-start;
+}
+
+.DialogText {
+  font-size: 2.75rem;
+  text-align: start;
+  padding:1rem;
+}
+
+.DialogButton {
+  font-size: 2.75rem;
+  padding:1rem;
+  text-decoration: none;
+  align-self: flex-end;
+}
+
+@media (max-width: 1600px) {
+  .DialogTitle {
+    font-size: 1.6rem;
+  }
+  .DialogText {
+    font-size: 1.5rem;
+  }
+  .DialogButton {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .DialogTitle {
+    font-size: 1.5rem;
+  }
+  .DialogText {
+    font-size: 1.4rem;
+  }
+  .DialogButton {
+    font-size: 1.4rem;
+  }
+}
+@media (max-width: 800px) {
+  .DialogTitle {
+    font-size: 1.3rem;
+  }
+  .DialogText {
+    font-size: 1.15rem;
+  }
+  .DialogButton {
+    font-size: 1.15rem;
+  }
+}
+@media (max-width: 500px) {
+  .DialogTitle {
+    font-size: 1rem;
+  }
+  .DialogText {
+    font-size: .8rem;
+  }
+  .DialogButton {
+    font-size: .8rem;
+  }
+}
