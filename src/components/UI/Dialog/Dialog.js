@@ -18,11 +18,6 @@ export default function AlertDialogSlide() {
     setOpen(false);
   };
 
-  const reloadPage = (e) => {
-    if (e.keyCode === 13) window.location.reload();
-    if (e.target) window.location.reload();
-  };
-
   return (
     <div>
       <Dialog
@@ -36,13 +31,10 @@ export default function AlertDialogSlide() {
       >
         <DialogTitle id='alert-dialog-slide-title'>{"Success!"}</DialogTitle>
         <DialogContent>
-          <DialogContentText id='alert-dialog-slide-description'>Wooah...Let's replay the simulation!</DialogContentText>
+          <DialogContentText id='alert-dialog-slide-description'>Wooah...Wholesome. Let's replay the simulation!</DialogContentText>
         </DialogContent>
         <DialogActions>
-          {/* <a href='/' style={{ textDecoration: "none", paddingRight: "1rem", paddingBottom: "1rem" }}>
-            Restart
-          </a> */}
-          <Button onClick={reloadPage} color='primary'>
+          <Button onClick={reloadPageClicking} color='primary'>
             Restart
           </Button>
         </DialogActions>
@@ -50,3 +42,11 @@ export default function AlertDialogSlide() {
     </div>
   );
 }
+
+// Functions for realoding the page
+const reloadPage = (e) => {
+  if (e.keyCode === 13) window.location.reload();
+};
+const reloadPageClicking = (e) => {
+  if (e.target) window.location.reload();
+};
