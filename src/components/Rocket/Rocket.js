@@ -106,7 +106,7 @@ const Rocket = React.memo(({ firstStageFuel, firstStageEngines, secondStageFuel,
   return (
     <div>
       {rockets}
-      {emptyStage && secondStageFinished ?  <Modal show={secondStageFinished} /> : null}
+      {emptyStage && secondStageFinished ?  <Modal show={emptyStage} /> : null}
     </div>
   );
 });
