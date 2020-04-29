@@ -46,8 +46,8 @@ const Rocket = React.memo(({ firstStageFuel, firstStageEngines, secondStageFuel,
         setMarginBottom(marginBottom + 13);
         setPathsHeight(Number(pathsHeight) + 13);
       } else if (screenHeight < 1650 && screenHeight >= 800) {
-        setMarginBottom(marginBottom + 6.5);
-        setPathsHeight(Number(pathsHeight) + 6.5);
+        setMarginBottom(marginBottom + 130); //6.5
+        setPathsHeight(Number(pathsHeight) + 130);
       } else if (screenHeight < 800 && screenHeight >= 600) {
         setMarginBottom(marginBottom + 4.5); // 4.5
         setPathsHeight(Number(pathsHeight) + 4.5);

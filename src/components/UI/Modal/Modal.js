@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import classes from "./Modal.module.css";
 import Backdrop from "../Backdrop/Backdrop";
@@ -11,6 +11,10 @@ const Modal = ({ show }) => {
   const reloadPageClicking = (e) => {
     if (e.target) window.location.reload();
   };
+
+  useEffect(() => {
+    setOpen(show);
+  }, [show])
 
   return (
     <div>
