@@ -18,14 +18,18 @@
 }
 
 .RocketParts {
+  height: 8rem;
+  width: 8rem;
 }
 
 h3 {
   color: white;
+  font-size: 2.5rem;
 }
 
 span {
   font-weight: 200;
+  font-size: 2.5rem;
 }
 
 .RocketFuelInfo {
@@ -35,7 +39,10 @@ span {
 }
 
 .RocketThrust {
-  animation: fumes .15s infinite;
+  animation: fumes 0.15s infinite;
+  height: 10rem;
+  width: 8rem;
+  margin-top: 0.25rem;
 }
 
 .RocketFuel {
@@ -45,10 +52,112 @@ span {
 }
 
 .RocketFuelBar {
-  height: 1rem;
-  margin-left: .75rem;
+  height: 2rem;
+  margin-left: 0.75rem;
+  max-width: 15vw;
   border-radius: 5px;
   background-color: rgb(174, 226, 174);
+}
+
+@media (max-width: 1650px) {
+  .RocketParts {
+    height: 3.5rem;
+    width: 3.5rem;
+  }
+  .RocketThrust {
+    height: 4rem;
+    width: 3.5rem;
+    margin-top: 0;
+  }
+  h3 {
+    font-size: 1.1rem;
+  }
+  span {
+    font-size: 1.2rem;
+  }
+  .RocketFuelBar {
+    height: 1rem;
+    max-width: 5.5vw;
+  }
+}
+
+@media (max-width: 800px) {
+  .RocketParts {
+    height: 3rem;
+    width: 3rem;
+  }
+  .RocketThrust {
+    height: 3.5rem;
+    width: 3rem;
+  }
+  h3 {
+    font-size: 1rem;
+  }
+  span {
+    font-size: 1rem;
+  }
+  .RocketFuelBar {
+    height: 1rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .RocketParts {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+  .RocketThrust {
+    height: 3rem;
+    width: 2.5rem;
+  }
+  h3 {
+    font-size: .85rem;
+  }
+  span {
+    font-size: .85rem;
+  }
+  .RocketFuelBar {
+    height: .85rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .RocketParts {
+    height: 2rem;
+    width: 2rem;
+  }
+  .RocketThrust {
+    height: 2.5rem;
+    width: 2rem;
+  }
+  h3 {
+    font-size: .7rem;
+  }
+  span {
+    font-size: .7rem;
+  }
+  .RocketFuelBar {
+    height: .7rem;
+  }
+}
+@media (max-width: 380px) {
+  .RocketParts {
+    height: 1.75;
+    width: 1.75;
+  }
+  .RocketThrust {
+    height: 2.25rem;
+    width: 1.75;
+  }
+  h3 {
+    font-size: .6rem;
+  }
+  span {
+    font-size: .6rem;
+  }
+  .RocketFuelBar {
+    height: .6rem;
+  }
 }
 
 @keyframes rocket {

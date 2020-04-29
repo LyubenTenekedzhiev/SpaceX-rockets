@@ -1,0 +1,41 @@
+.DialogTitle {
+  font-size: 2.5rem;
+}
+
+.DialogText {
+  font-size: 2.2rem;
+}
+
+@media (max-width: 1600px) {
+  .DialogTitle {
+    font-size: 1.6rem;
+  }
+  .DialogText {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .DialogTitle {
+    font-size: 1.5rem;
+  }
+  .DialogText {
+    font-size: 1.4rem;
+  }
+}
+@media (max-width: 800px) {
+  .DialogTitle {
+    font-size: 1.3rem;
+  }
+  .DialogText {
+    font-size: 1.15rem;
+  }
+}
+@media (max-width: 500px) {
+  .DialogTitle {
+    font-size: 1rem;
+  }
+  .DialogText {
+    font-size: .8rem;
+  }
+}
