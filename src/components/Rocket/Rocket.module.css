@@ -8,11 +8,39 @@
 .Rocket {
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.RocketBody {
+  display: flex;
+  flex-direction: column;
   animation: rocket 1.5s infinite;
+}
+
+.RocketParts {
+}
+
+.RocketFuelInfo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .RocketThrust {
   animation: fumes .15s infinite;
+}
+
+.RocketFuel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.RocketFuelBar {
+  height: 1rem;
+  margin-left: .75rem;
+  border-radius: 5px;
+  background-color: rgb(174, 226, 174);
 }
 
 @keyframes rocket {

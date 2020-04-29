@@ -11,7 +11,7 @@ function RocketGrid() {
   useEffect(() => {
     fetchRocketData("https://api.spacexdata.com/v2/rockets", setFetching, setRocketData);
   }, []);
-
+  
   let rockets;
   if (fetching) {
     rockets = <Spinner />;
@@ -20,6 +20,7 @@ function RocketGrid() {
       return (
         <Rocket
           key={rocket.id}
+          name={rocket.name}
           firstStageFuel={rocket.first_stage.fuel_amount_tons}
           firstStageEngines={rocket.first_stage.engines}
           secondStageFuel={rocket.second_stage.fuel_amount_tons}
