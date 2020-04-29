@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 
-import rocket from "../../assets/rocket.png";
 import thrust from "../../assets/thrust.png";
 import rocketTop from "../../assets/rocket_top.png";
+import rocketBottom from "../../assets/rocket_bottom.png";
 import Dialog from "../UI/Dialog/Dialog";
+import AnimatedVisibility from "../UI/AnimatedComponent/AnimatedComponent";
 import classes from "./Rocket.module.css";
 
 let count = 0;
@@ -44,34 +45,22 @@ const Rocket = React.memo(({ firstStageFuel, firstStageEngines, secondStageFuel,
   let successMsg;
   let rockets = (
     <div className={classes.RocketPath}>
-      {!secondStageStarted && !secondStageFinished ? (
-        <div className={classes.Rocket} style={{ marginBottom: marginBottom + "px" }}>
-          <div className={classes.RocketBody}>
-            <img className={classes.RocketParts} src={rocket} alt='rocket' />
-            <img className={classes.RocketParts} src={thrust} alt='thrust' />
-          </div>
-          <div className={classes.RocketFuel}>
-            <h3>Name: {name}</h3>
-            <div className={classes.RocketFuelInfo}>
-              <h3>Fuel:</h3>
-              <div className={classes.RocketFuelBar} style={fuelBarHeight}></div>
-            </div>
-            <h3>Stage: {stage}</h3>
-          </div>
-        </div>
-      ) : secondStageStarted && !secondStageFinished ? (
+      {!secondStageFinished ? (
         <div className={classes.Rocket} style={{ marginBottom: marginBottom + "px" }}>
           <div className={classes.RocketBody}>
             <img className={classes.RocketParts} src={rocketTop} alt='rocket' />
-            <img className={classes.RocketParts} src={thrust} alt='thrust' />
+            <AnimatedVisibility visible={!secondStageStarted} animationOut='fadeOutLeft' animationIn=''>
+              <img className={classes.RocketParts} src={rocketBottom} alt='rocket' />
+            </AnimatedVisibility>
+            <img className={classes.RocketThrust} src={thrust} alt='thrust' />
           </div>
           <div className={classes.RocketFuel}>
-            <h3>Name: {name}</h3>
+            <h3>Name: <span>{name}</span></h3>
             <div className={classes.RocketFuelInfo}>
               <h3>Fuel:</h3>
               <div className={classes.RocketFuelBar} style={fuelBarHeight}></div>
             </div>
-            <h3>Stage: {stage}</h3>
+            <h3>Stage: <span>{stage}</span></h3>
           </div>
         </div>
       ) : null}

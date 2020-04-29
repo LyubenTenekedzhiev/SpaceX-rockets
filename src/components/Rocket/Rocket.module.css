@@ -20,6 +20,14 @@
 .RocketParts {
 }
 
+h3 {
+  color: white;
+}
+
+span {
+  font-weight: 200;
+}
+
 .RocketFuelInfo {
   display: flex;
   justify-content: flex-start;
