@@ -23,7 +23,7 @@ const Modal = ({ show }) => {
           <Backdrop show={open} clicked={closeBackdrop} />
           <div className={classes.Modal}>
             <p className={classes.DialogTitle}>Success!</p>
-            <p className={classes.DialogText}>Wooah...Wholesome. Let's replay the simulation!</p>
+            <p className={classes.DialogText}>Wooah...Awesome. Let's replay the simulation!</p>
             <a href='/' className={classes.DialogButton} onClick={reloadPageClicking}>
               REPEAT
             </a>
