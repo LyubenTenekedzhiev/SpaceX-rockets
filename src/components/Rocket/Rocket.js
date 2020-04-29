@@ -4,7 +4,7 @@ import thrust from "../../assets/thrust.png";
 import rocketTop from "../../assets/rocket_top.png";
 import rocketBottom from "../../assets/rocket_bottom.png";
 import AnimatedVisibility from "../UI/AnimatedComponent/AnimatedComponent";
-import Modal from "../UI/Modal/Modal"
+import Modal from "../UI/Modal/Modal";
 import classes from "./Rocket.module.css";
 
 let count = 0;
@@ -18,6 +18,7 @@ const Rocket = React.memo(({ firstStageFuel, firstStageEngines, secondStageFuel,
   const [secondStageStarted, setSecondStageStarted] = useState(false);
   const [secondStageFinished, setSecondStageFinished] = useState(false);
   const [stage, setStage] = useState("");
+  const [emptyStage, setEmptyStage] = useState(false);
   const [screenHeight, setScreenHeight] = useState(window.innerHeight);
 
   useEffect(() => {
@@ -46,8 +47,8 @@ const Rocket = React.memo(({ firstStageFuel, firstStageEngines, secondStageFuel,
         setMarginBottom(marginBottom + 13);
         setPathsHeight(Number(pathsHeight) + 13);
       } else if (screenHeight < 1650 && screenHeight >= 800) {
-        setMarginBottom(marginBottom + 6.5);
-        setPathsHeight(Number(pathsHeight) + 6.5);
+        setMarginBottom(marginBottom + 130);
+        setPathsHeight(Number(pathsHeight) + 130);
       } else if (screenHeight < 800 && screenHeight >= 600) {
         setMarginBottom(marginBottom + 4.5); // 4.5
         setPathsHeight(Number(pathsHeight) + 4.5);
@@ -67,7 +68,6 @@ const Rocket = React.memo(({ firstStageFuel, firstStageEngines, secondStageFuel,
     };
   }, [updateWindowDimensions]);
 
-  let successMsg;
   let rockets = (
     <div className={classes.RocketPath}>
       {!secondStageFinished ? (
@@ -99,14 +99,14 @@ const Rocket = React.memo(({ firstStageFuel, firstStageEngines, secondStageFuel,
   if (rockets.props.children === null) {
     count++;
     if (count === numberOfRockets * 2) {
-      successMsg = <Modal show={secondStageFinished} />;
+      setEmptyStage(true);
     }
   }
-
+  
   return (
     <div>
       {rockets}
-      {successMsg}
+      {emptyStage && secondStageFinished ?  <Modal show={secondStageFinished} /> : null}
     </div>
   );
 });
