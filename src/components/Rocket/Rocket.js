@@ -47,8 +47,8 @@ const Rocket = React.memo(({ firstStageFuel, firstStageEngines, secondStageFuel,
         setMarginBottom(marginBottom + 13);
         setPathsHeight(Number(pathsHeight) + 13);
       } else if (screenHeight < 1650 && screenHeight >= 800) {
-        setMarginBottom(marginBottom + 130);
-        setPathsHeight(Number(pathsHeight) + 130);
+        setMarginBottom(marginBottom + 6.5);
+        setPathsHeight(Number(pathsHeight) + 6.5);
       } else if (screenHeight < 800 && screenHeight >= 600) {
         setMarginBottom(marginBottom + 4.5); // 4.5
         setPathsHeight(Number(pathsHeight) + 4.5);
@@ -98,15 +98,14 @@ const Rocket = React.memo(({ firstStageFuel, firstStageEngines, secondStageFuel,
 
   if (rockets.props.children === null) {
     count++;
-    if (count === numberOfRockets * 2) {
+    if (count === numberOfRockets) {
       setEmptyStage(true);
     }
   }
-  
+
   return (
     <div>
-      {rockets}
-      {emptyStage && secondStageFinished ?  <Modal show={emptyStage} /> : null}
+      {!secondStageFinished ? rockets : <Modal show={emptyStage} />}
     </div>
   );
 });

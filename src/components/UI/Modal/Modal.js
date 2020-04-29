@@ -14,9 +14,8 @@ const Modal = ({ show }) => {
 
   useEffect(() => {
     setOpen(show);
-  }, [show])
-  
-  console.log(show);
+  }, [show]);
+
   return (
     <div>
       {open ? (
