@@ -9,23 +9,26 @@ const RocketBottom = ({ firstFuel, scale }) => {
   const iter = useRef(0);
 
   useTick((delta) => {
-    const positionVal = (iter.current -= 0.005 * delta);
+    const positionValue = (iter.current -= 0.005 * delta);
     update({
       type: "update",
       data: {
         x:
           scale === 1.5
-            ? Math.sin(positionVal) * 40
+            ? Math.sin(positionValue) * 40
             : scale === 1
-            ? Math.sin(positionVal) * 25
+            ? Math.sin(positionValue) * 25
             : scale === 0.65
-            ? Math.sin(positionVal) * 15
-            : Math.sin(positionVal),
+            ? Math.sin(positionValue) * 15
+            : Math.sin(positionValue),
         y:
-          scale === 1.5 ? Math.sin(positionVal / 3) * 450 : scale === 1 ? Math.sin(positionVal / 3) * 250 : Math.sin(positionVal / 3) * 175,
+          scale === 1.5
+            ? Math.sin(positionValue / 3) * 450
+            : scale === 1
+            ? Math.sin(positionValue / 3) * 250
+            : Math.sin(positionValue / 3) * 175,
+            
         scale: scale,
-        // alpha: Math.sin(i * 10),
-        // visibile: false
       },
     });
   });

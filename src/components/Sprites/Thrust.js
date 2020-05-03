@@ -50,8 +50,11 @@ const Thrust = ({ firstFuel, secondFuel, scale }) => {
             : scale === 1
             ? Math.sin(positionValue / 3) * 250
             : Math.sin(positionValue / 3) * 175,
+
         scale: scale === 0.65 ? scale - 0.15 : scale === 0.45 ? scale - 0.1 : scale - 0.25,
+        
         anchor: Math.sin(positionValue / 2),
+
         pivot:
           scale === 1.5 && firstFuel
             ? new ObservablePoint(this, 0, -10, -90)
@@ -68,6 +71,7 @@ const Thrust = ({ firstFuel, secondFuel, scale }) => {
             : scale === 0.65
             ? new ObservablePoint(this, 0, -13, -55)
             : new ObservablePoint(this, 0, -14, -60),
+            
         alpha: (firstFuel || secondFuel) <= 5 && (firstFuel || secondFuel) !== 0 ? Math.sin(positionValue * 20) : true,
       },
     });

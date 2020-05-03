@@ -9,7 +9,6 @@ import InfoText from "./InfoText";
 
 import { fuelFunction } from "../../functions/fuelFunction";
 
-// Main function
 function RocketSprite({ name, firstStageFuel, firstStageEngines, secondStageFuel, secondStageEngines }) {
   const [firstFuel, setFirstFuel] = useState((firstStageFuel / firstStageEngines).toFixed(0));
   const [secondFuel, setSecondFuel] = useState((secondStageFuel / secondStageEngines).toFixed(0));
