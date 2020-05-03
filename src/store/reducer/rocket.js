@@ -7,7 +7,6 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionType.CLEAR_STAGE:
-      console.log(state.shouldStageBeCleared);
       return {
         ...state,
         shouldStageBeCleared: [...action.arr],

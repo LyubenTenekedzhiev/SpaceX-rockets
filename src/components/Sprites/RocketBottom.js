@@ -1,9 +1,9 @@
-import React, { useRef } from "react";
+import React, { useRef, useReducer } from "react";
 import { Sprite, useTick } from "@inlet/react-pixi";
 
 import rocketBottom from "../../assets/rocket_bottom.png";
 
-const RocketBottom = ({ useReducer, firstFuel }) => {
+const RocketBottom = ({ firstFuel, scale }) => {
   const reducer = (_, { data }) => data;
   const [motion, update] = useReducer(reducer);
   const iter = useRef(0);
@@ -13,8 +13,17 @@ const RocketBottom = ({ useReducer, firstFuel }) => {
     update({
       type: "update",
       data: {
-        x: firstFuel ? Math.sin(positionVal) * 30 : Math.sin(positionVal) * 70,
-        y: Math.sin(positionVal / 3) * 200,
+        x:
+          scale === 1.5
+            ? Math.sin(positionVal) * 40
+            : scale === 1
+            ? Math.sin(positionVal) * 25
+            : scale === 0.65
+            ? Math.sin(positionVal) * 15
+            : Math.sin(positionVal),
+        y:
+          scale === 1.5 ? Math.sin(positionVal / 3) * 450 : scale === 1 ? Math.sin(positionVal / 3) * 250 : Math.sin(positionVal / 3) * 175,
+        scale: scale,
         // alpha: Math.sin(i * 10),
         // visibile: false
       },

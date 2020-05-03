@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useMemo, useState, useRef, useReducer } from "react";
 import { ObservablePoint, Point } from "pixi.js";
 import { useTick, Container, SimpleRope } from "@inlet/react-pixi";
 
 import thrust from "../../assets/thrust.png";
 
-const Thrust = ({ useMemo, useState, useReducer, useRef, firstFuel, secondFuel }) => {
+const Thrust = ({ firstFuel, secondFuel, scale }) => {
   // Setting initial points and length
   const ropeLength = 2.5;
   const i = useRef(0);
@@ -36,10 +36,38 @@ const Thrust = ({ useMemo, useState, useReducer, useRef, firstFuel, secondFuel }
     update({
       type: "update",
       data: {
-        x: Math.sin(positionValue) * 30,
-        y: Math.sin(positionValue / 3) * 200,
+        x:
+          scale === 1.5
+            ? Math.sin(positionValue) * 40
+            : scale === 1
+            ? Math.sin(positionValue) * 25
+            : scale === 0.65
+            ? Math.sin(positionValue) * 15
+            : Math.sin(positionValue),
+        y:
+          scale === 1.5
+            ? Math.sin(positionValue / 3) * 450
+            : scale === 1
+            ? Math.sin(positionValue / 3) * 250
+            : Math.sin(positionValue / 3) * 175,
+        scale: scale === 0.65 ? scale - 0.15 : scale === 0.45 ? scale - 0.1 : scale - 0.25,
         anchor: Math.sin(positionValue / 2),
-        pivot: firstFuel ? new ObservablePoint(this, 0, -14.5, -95) : new ObservablePoint(this, 0, -14.5, -55),
+        pivot:
+          scale === 1.5 && firstFuel
+            ? new ObservablePoint(this, 0, -10, -90)
+            : scale === 1 && firstFuel
+            ? new ObservablePoint(this, 0, -14.5, -95)
+            : scale === 0.65 && firstFuel
+            ? new ObservablePoint(this, 0, -13, -90)
+            : scale === 0.45 && firstFuel
+            ? new ObservablePoint(this, 0, -14, -90)
+            : scale === 1.5
+            ? new ObservablePoint(this, 0, -10, -55)
+            : scale === 1
+            ? new ObservablePoint(this, 0, -14.5, -60)
+            : scale === 0.65
+            ? new ObservablePoint(this, 0, -13, -55)
+            : new ObservablePoint(this, 0, -14, -60),
         alpha: (firstFuel || secondFuel) <= 5 && (firstFuel || secondFuel) !== 0 ? Math.sin(positionValue * 20) : true,
       },
     });
