@@ -1,24 +1,27 @@
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 
-import Rocket from "./../Rocket/Rocket";
+import RocketSprite from "./../Sprites/RocketSprite";
 import Spinner from "../UI/Spinner/Spinner";
+import Modal from "../UI/Modal/Modal";
+import { fetchRocketData } from "../../functions/fetchingData";
 import classes from "./RocketGrid.module.css";
 
-function RocketGrid() {
+function RocketGrid({ shouldStageBeCleared }) {
   const [rocketData, setRocketData] = useState([]);
   const [fetching, setFetching] = useState(false);
 
   useEffect(() => {
     fetchRocketData("https://api.spacexdata.com/v2/rockets", setFetching, setRocketData);
   }, []);
-  
+
   let rockets;
   if (fetching) {
     rockets = <Spinner />;
   } else {
     rockets = rocketData.map((rocket) => {
       return (
-        <Rocket
+        <RocketSprite
           key={rocket.id}
           name={rocket.name}
           firstStageFuel={rocket.first_stage.fuel_amount_tons}
@@ -30,23 +33,13 @@ function RocketGrid() {
       );
     });
   }
-  return <div className={classes.RocketGrid}>{rockets}</div>;
+  return <div className={classes.RocketGrid}>{shouldStageBeCleared.length === 4 ? <Modal show={true} /> : rockets}</div>;
 }
 
-export default React.memo(RocketGrid);
-
-// Function for fetching data from the API
-const fetchRocketData = async (url, fetching, rocketData) => {
-  if (!url) return [];
-  fetching(true);
-  try {
-    const dataResponse = await fetch(url);
-    const dataJSON = await dataResponse.json();
-    const data = dataJSON;
-    rocketData(data);
-    fetching(false);
-  } catch (error) {
-    console.log(error);
-    fetching(true);
-  }
+const mapStateToProps = (state) => {
+  return {
+    shouldStageBeCleared: state.shouldStageBeCleared,
+  };
 };
+
+export default connect(mapStateToProps)(React.memo(RocketGrid));

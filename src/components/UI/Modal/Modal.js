@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-import classes from "./Modal.module.css";
 import Backdrop from "../Backdrop/Backdrop";
+import classes from "./Modal.module.css";
 
 const Modal = ({ show }) => {
   const [open, setOpen] = useState(show);
